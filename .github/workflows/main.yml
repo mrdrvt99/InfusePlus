@@ -41,13 +41,13 @@ jobs:
 
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.2
         with:
           path: main
           submodules: recursive
 
       - name: Hide sensitive inputs
-        uses: levibostian/action-hide-sensitive-inputs@v1
+        uses: levibostian/action-hide-sensitive-inputs@1.2.0
         with:
           exclude_inputs: display_name,tweak_version,bundle_id
 
@@ -84,7 +84,7 @@ jobs:
         run: cyan -i infuse.ipa -o InfusePlus_${{ inputs.tweak_version }}.ipa -uwef infplus.deb -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Upload to GitHub Releases
-        uses: softprops/action-gh-release@v2.0.1
+        uses: softprops/action-gh-release@v3
         with:
           name: InfusePlus v${{ inputs.tweak_version }} (${{ github.run_number }})
           files: InfusePlus_${{ inputs.tweak_version }}.ipa

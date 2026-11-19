@@ -41,7 +41,7 @@ jobs:
 
     steps:
       - name: Hide sensitive inputs
-        uses: levibostian/action-hide-sensitive-inputs@39cfbde19b3251728d2357dd0648172d1202c1ee # v1
+        uses: levibostian/action-hide-sensitive-inputs@v1
         with:
           exclude_inputs: display_name,tweak_version,bundle_id
 
@@ -72,7 +72,7 @@ jobs:
         run: cyan -i infuse.ipa -o InfusePlus_${{ inputs.tweak_version }}.ipa -uwef infplus.deb -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Upload to GitHub Releases
-        uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3.0.4
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: infp-${{ github.run_number }}
           name: InfusePlus v${{ inputs.tweak_version }} (${{ github.run_number }})
